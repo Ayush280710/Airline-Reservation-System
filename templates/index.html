@@ -9,25 +9,28 @@
 </head>
 
 <body>
-    <nav>
-    <h2>SkyWings</h2>
+     <div id="main">
+        <div id="page1">
+           <nav>
+            <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Horizon Airlines Logo">
+            <div id="nav-part2">
+                <a href="{{ url_for('home') }}">Home</a>
 
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Flights</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-    </ul>
-</nav>
+        <a href="{{ url_for('flights') }}">Flights</a>
 
-<section class="hero">
-    <h1>Book Your Dream Flight ✈️</h1>
-    <p>Fast, Safe and Affordable Air Travel</p>
+        <a href="{{ url_for('booking') }}">Book Flight</a>
 
-    <button>Book Now</button>
-</section>
+        <a href="{{ url_for('profile') }}">Profile</a>
 
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
 
+            </div>
+            <div id="nav-part3">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            </div>
+           </nav>
+        </div>
+     </div>
 </body>
 </html>
