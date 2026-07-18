@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airline Reservation System</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -30,6 +31,70 @@
                 <a href="{{ url_for('register') }}">Register</a>
             </div>
            </nav>
+           <section id="hero">
+
+    <div id="hero-left">
+
+        <h1>
+            Fly Beyond the <br>
+           <span>Horizon</span>
+        </h1>
+
+        <p>
+            Discover a smarter way to travel with Horizon Airlines.
+            Enjoy safe, comfortable, and affordable flights to your
+            favorite destinations.
+        </p>
+
+        <div id="hero-buttons">
+            <a href="/booking" class="btn-primary">Book Flight</a>
+            <a href="/flights" class="btn-secondary">Explore Flights</a>
+        </div>
+
+    </div>
+
+     <div id="hero-right">
+    <video autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='videos/plane.mp4') }}" type="video/mp4">
+    </video>
+</div>
+
+</section>
+<section id="search-section">
+
+    <div id="search-box">
+        <h2>Find Your Next Journey ✈️</h2>
+        <div class="input-box">
+            <label>From</label>
+            <input type="text" placeholder="New Delhi">
+        </div>
+
+        <div class="input-box">
+            <label>To</label>
+            <input type="text" placeholder="London">
+        </div>
+
+        <div class="input-box">
+            <label>Departure</label>
+            <input type="date">
+        </div>
+
+        <div class="input-box">
+            <label>Passengers</label>
+            <select>
+                <option>1 Adult</option>
+                <option>2 Adults</option>
+                <option>3 Adults</option>
+                <option>4 Adults</option>
+                <option>5 Adult</option>
+            </select>
+        </div>
+
+        <button>Search Flights</button>
+
+    </div>
+
+</section>
         </div>
      </div>
 </body>
