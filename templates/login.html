@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+        <h1>Welcome Back</h1>
+
+        <p>Login to continue your journey.</p>
+
+        <form action="/login" method="POST">
+
+            <div class="input-box">
+                <i class="ri-mail-line"></i>
+                <input type="email" placeholder="Email Address" name="email" required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-lock-line"></i>
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <a class="register-link" href="/register">
+            Don't have an account? Register
+        </a>
+
+        <a class="home-link" href="/">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airline Reservation System</title>
+    <title>Horizon Airlines</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -63,7 +65,7 @@
 <section id="search-section">
 
     <div id="search-box">
-        <h2>Find Your Next Journey ✈️</h2>
+        <h2>Find Your Next Journey:</h2>
         <div class="input-box">
             <label>From</label>
             <input type="text" placeholder="New Delhi">
@@ -95,7 +97,225 @@
     </div>
 
 </section>
+        <section id="destinations">
+
+    <h2>Popular Destinations</h2>
+    <p>Explore our most loved destinations around the world.</p>
+
+    <div class="destination-container">
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/paris.jpg') }}" alt="">
+            <div class="card-content">
+                <h3>Paris</h3>
+                <p>Starting from ₹29,999</p>
+                <a href="/booking">Book Now →</a>
+            </div>
         </div>
-     </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/dubai.jpg') }}" alt="">
+            <div class="card-content">
+                <h3>Dubai</h3>
+                <p>Starting from ₹18,999</p>
+                <a href="/booking">Book Now →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/tokyo.jpg') }}" alt="">
+            <div class="card-content">
+                <h3>Tokyo</h3>
+                <p>Starting from ₹41,999</p>
+                <a href="/booking">Book Now →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/newyork.jpg') }}" alt="">
+            <div class="card-content">
+                <h3>New York</h3>
+                <p>Starting from ₹55,999</p>
+                <a href="/booking">Book Now →</a>
+            </div>
+        </div>
+
+    </div>
+
+    </section>
+    <section id="why-us">
+
+    <div id="why-heading">
+        <h2>Why Choose Horizon Airlines</h2>
+        <p>Experience comfort, safety and world-class service on every journey.</p>
+    </div>
+
+    <div id="why-container">
+
+        <div class="why-card">
+            <div class="icon">
+    <i class="ri-flight-takeoff-line"></i>
+            </div>
+            <h3>On-Time Flights</h3>
+            <p>95% of our flights depart and arrive on schedule.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon">
+    <i class="ri-shield-check-line"></i>
+            </div>
+            <h3>Safe Travel</h3>
+            <p>Your safety is our highest priority with modern aircraft.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon">
+    <i class="ri-money-dollar-circle-line"></i>
+            </div>
+            <h3>Best Prices</h3>
+            <p>Affordable fares with exciting offers throughout the year.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon">
+    <i class="ri-customer-service-2-line"></i>
+             </div>
+            <h3>24/7 Support</h3>
+            <p>Our team is available anytime to assist your travel needs.</p>
+        </icon>
+
+    </div>
+
+</section>
+<section id="experience">
+
+    <h2>Experience Premium Travel</h2>
+    <p>Everything you need for a comfortable journey.</p>
+
+    <div class="experience-container">
+
+        <div class="experience-card">
+            <i class="ri-tv-2-line"></i>
+            <h3>In-flight Entertainment</h3>
+            <p>Enjoy blockbuster movies, hit shows, and music at your fingertips.</p>
+        </div>
+
+        <div class="experience-card">
+            <i class="ri-restaurant-line"></i>
+            <h3>Premium Meals</h3>
+            <p>Fresh meals prepared for every flight.</p>
+        </div>
+
+        <div class="experience-card">
+            <i class="ri-hotel-bed-line"></i>
+            <h3>Comfort Seats</h3>
+            <p>Relax with spacious seating and extra legroom.</p>
+        </div>
+
+        <div class="experience-card">
+            <i class="ri-wifi-line"></i>
+            <h3>Free WiFi</h3>
+            <p>Stay connected throughout your journey.</p>
+        </div>
+
+    </div>
+
+</section>
+<section id="testimonials">
+
+    <h2>What Our Passengers Say</h2>
+    <p>Thousands of happy travelers choose Horizon Airlines.</p>
+
+    <div class="testimonial-container">
+
+        <div class="testimonial-card">
+            <img src="{{ url_for('static', filename='images/user1.jpg') }}" alt="">
+            <h3>John Smith</h3>
+            <span>⭐⭐⭐⭐⭐</span>
+
+            <p>
+                The booking process was smooth and the flight was perfectly on
+                time. Highly recommended!
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="{{ url_for('static', filename='images/user2.jpg') }}" alt="">
+            <h3>Emily Johnson</h3>
+            <span>⭐⭐⭐⭐⭐</span>
+
+            <p>
+                Amazing cabin service, comfortable seats and excellent food.
+                Will definitely fly again.
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="{{ url_for('static', filename='images/user3.jpg') }}" alt="">
+            <h3>Michael Brown</h3>
+            <span>⭐⭐⭐⭐⭐</span>
+
+            <p>
+                One of the best airline experiences I've had. Everything was
+                organized and hassle-free.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+<footer id="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-column">
+            <h2>✈ Horizon Airlines</h2>
+            <p>
+                Fly Beyond the Horizon. Experience comfort, safety and
+                unforgettable journeys across the world.
+            </p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+
+            <a href="/">Home</a>
+            <a href="/booking">Book Flight</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Support</h3>
+
+            <a href="#">Help Center</a>
+            <a href="#">FAQs</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact</h3>
+
+            <p>📧 support@horizonairlines.com</p>
+            <p>📞 +91 98765 43210</p>
+            <p>📍 New Delhi, India</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+
+        <p>© 2026 Horizon Airlines. All Rights Reserved.</p>
+
+    </div>
+
+</footer>
+</div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script> 
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
