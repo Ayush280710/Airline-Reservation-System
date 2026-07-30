@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Flight | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+        <h1>Book Flight</h1>
+
+        <p>Fill in your travel details.</p>
+
+        <form action="{{ url_for('booking') }}" method="POST">
+
+            <div class="input-box">
+                <i class="ri-flight-takeoff-line"></i>
+                <input type="text" name="source" placeholder="From" required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-flight-land-line"></i>
+                <input type="text" name="destination" placeholder="To" required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-calendar-line"></i>
+                <input type="date" name="date" required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-user-line"></i>
+                <input type="number" name="passengers" placeholder="Passengers" min="1" required>
+            </div>
+
+            <button type="submit">
+                Book Flight
+            </button>
+
+        </form>
+
+        <a class="home-link" href="{{ url_for('dashboard') }}">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

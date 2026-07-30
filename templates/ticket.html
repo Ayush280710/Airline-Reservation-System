@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Ticket | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+        <h1>Boarding Pass ✈</h1>
+
+        <p>Your flight has been booked successfully.</p>
+
+        <hr><br>
+
+        <div class="input-box">
+            <input type="text" value="Passenger : {{ booking.name }}" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="From : {{ booking.source }}" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="To : {{ booking.destination }}" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="Travel Date : {{ booking.date }}" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="Passengers : {{ booking.passengers }}" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="Flight : HA-204" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="Gate : B12" readonly>
+        </div>
+
+        <div class="input-box">
+            <input type="text" value="Seat : 14A" readonly>
+        </div>
+
+        <br>
+
+        <a href="{{ url_for('home') }}">
+            <button>Return Home</button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

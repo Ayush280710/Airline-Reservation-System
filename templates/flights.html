@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Flights | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flights.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="flights-container">
+
+    <div class="flights-card">
+
+        <div class="header">
+
+            <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+            <h1>Available Flights</h1>
+
+            <p>Choose your destination and book your next journey.</p>
+
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Flight No.</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Price</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>HA101</td>
+                        <td>Delhi</td>
+                        <td>Mumbai</td>
+                        <td>09:00 AM</td>
+                        <td>11:15 AM</td>
+                        <td>₹5,499</td>
+                    </tr>
+
+                    <tr>
+                        <td>HA204</td>
+                        <td>Delhi</td>
+                        <td>Dubai</td>
+                        <td>01:30 PM</td>
+                        <td>05:45 PM</td>
+                        <td>₹18,999</td>
+                    </tr>
+
+                    <tr>
+                        <td>HA305</td>
+                        <td>Mumbai</td>
+                        <td>London</td>
+                        <td>07:45 PM</td>
+                        <td>05:30 AM</td>
+                        <td>₹42,999</td>
+                    </tr>
+
+                    <tr>
+                        <td>HA410</td>
+                        <td>Bengaluru</td>
+                        <td>Singapore</td>
+                        <td>11:15 AM</td>
+                        <td>05:20 PM</td>
+                        <td>₹24,999</td>
+                    </tr>
+
+                    <tr>
+                        <td>HA512</td>
+                        <td>Delhi</td>
+                        <td>Paris</td>
+                        <td>10:00 PM</td>
+                        <td>06:45 AM</td>
+                        <td>₹39,999</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="buttons">
+
+            <a href="{{ url_for('booking') }}" class="book-btn">
+                <i class="ri-flight-takeoff-line"></i>
+                Book Flight
+            </a>
+
+            <a href="{{ url_for('home') }}" class="home-btn">
+                <i class="ri-home-4-line"></i>
+                Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

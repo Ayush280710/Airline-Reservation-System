@@ -1,0 +1,164 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Gilroy',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #ffb36b 0%,
+        #ff7b7b 45%,
+        #74b9ff 100%
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.flights-container{
+    width:100%;
+    max-width:1200px;
+}
+
+.flights-card{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.header img{
+    width:140px;
+    border-radius:18px;
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-size:48px;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#f2f2f2;
+    font-size:18px;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+thead{
+    background:rgba(255,255,255,.18);
+}
+
+th{
+    padding:18px;
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+}
+
+td{
+    padding:18px;
+    text-align:center;
+    color:white;
+    border-top:1px solid rgba(255,255,255,.15);
+}
+
+tbody tr{
+    transition:.3s;
+}
+
+tbody tr:hover{
+    background:rgba(255,255,255,.08);
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.book-btn,
+.home-btn{
+    text-decoration:none;
+    color:white;
+    padding:15px 35px;
+    border-radius:50px;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.book-btn{
+    background:#ff8c42;
+}
+
+.book-btn:hover{
+    background:#ff6b00;
+    transform:translateY(-5px);
+}
+
+.home-btn{
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.home-btn:hover{
+    background:rgba(255,255,255,.25);
+    transform:translateY(-5px);
+}
+
+@media(max-width:900px){
+
+.flights-card{
+    padding:25px;
+}
+
+.header h1{
+    font-size:36px;
+}
+
+th,
+td{
+    padding:12px;
+    font-size:14px;
+}
+
+.buttons{
+    flex-direction:column;
+    align-items:center;
+}
+
+.book-btn,
+.home-btn{
+    width:250px;
+    justify-content:center;
+}
+
+}

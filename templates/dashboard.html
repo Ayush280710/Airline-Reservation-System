@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+        <h1>Dashboard</h1>
+
+        <p>Welcome {{ user.name }}</p>
+
+        <div class="input-box">
+            <input type="text" value="Total Bookings : {{ total_bookings }}" readonly>
+        </div>
+
+        <br>
+
+        <a href="{{ url_for('booking') }}">
+            <button>Book Flight</button>
+        </a>
+
+        <br><br>
+
+        <a href="{{ url_for('profile') }}">
+            <button>View Profile</button>
+        </a>
+
+        <br><br>
+
+        <a class="home-link" href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
