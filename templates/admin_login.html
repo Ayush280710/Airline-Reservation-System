@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+        <h1>Admin Login</h1>
+
+        <p>Sign in to manage Horizon Airlines.</p>
+
+        <form action="{{ url_for('admin_login') }}" method="POST">
+
+            <div class="input-box">
+                <i class="ri-user-settings-line"></i>
+                <input type="text" name="username" placeholder="Admin Username" required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-lock-line"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit">
+                Admin Login
+            </button>
+
+        </form>
+
+        <a class="home-link" href="{{ url_for('home') }}">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

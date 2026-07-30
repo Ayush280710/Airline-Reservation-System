@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+
+        <h1>Create Account</h1>
+
+        <p>Join Horizon Airlines and start your journey.</p>
+
+        <form action="{{ url_for('register') }}" method="POST">
+
+            <div class="input-box">
+                <i class="ri-user-line"></i>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-mail-line"></i>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <i class="ri-lock-line"></i>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create Password"
+                    required>
+            </div>
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <a class="register-link" href="{{ url_for('login') }}">
+            Already have an account? Login
+        </a>
+
+        <a class="home-link" href="{{ url_for('home') }}">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

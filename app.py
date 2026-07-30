@@ -20,8 +20,21 @@ def login():
 
     return render_template("login.html")
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
+
+    if request.method == "POST":
+
+        name = request.form["name"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        print("Name:", name)
+        print("Email:", email)
+        print("Password:", password)
+
+        return redirect(url_for("login"))
+
     return render_template("register.html")
 
 @app.route("/profile")
@@ -44,8 +57,20 @@ def booking():
 def ticket():
     return render_template("ticket.html")
 
-@app.route("/admin/login")
+@app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # Simple admin credentials
+        if username == "admin" and password == "admin123":
+            return redirect(url_for("admin_dashboard"))
+
+        return "Invalid Admin Credentials"
+
     return render_template("admin_login.html")
 
 
