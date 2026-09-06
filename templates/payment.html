@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay & Complete Booking | Horizon Airlines</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gilroy', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffb36b 0%, #ff7b7b 45%, #74b9ff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .payment-card {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 35px 30px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .payment-card img.logo {
+            height: 50px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .payment-card h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .payment-card p.subtitle {
+            font-size: 15px;
+            color: #f1f1f1;
+            margin-bottom: 20px;
+        }
+
+        .qr-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        .qr-container:hover {
+            transform: scale(1.03);
+        }
+
+        .qr-container img {
+            width: 210px;
+            height: 210px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .amount-tag {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            margin-bottom: 5px;
+        }
+
+        .details-info {
+            font-size: 14px;
+            color: #e3e3e3;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .btn-confirm {
+            width: 100%;
+            padding: 15px;
+            background: #ff8c38;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-confirm:hover {
+            background: #ff6f00;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-card">
+    <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo" class="logo">
+
+    <h1>Scan to Pay 📲</h1>
+    <p class="subtitle">Scan using Google Pay, PhonePe, or Paytm</p>
+
+    <div class="qr-container">
+        <!-- Aapka QR Code Image -->
+        <img src="{{ url_for('static', filename='images/qr_code.png') }}" alt="Payment QR Scanner">
+    </div>
+
+    <div class="amount-tag">Total: ₹{{ pending['total_amount'] }}</div>
+    <div class="details-info">
+        Passengers: {{ pending['passengers_count'] }} Adult(s) | Seats: {{ pending['seats_str'] }}
+    </div>
+
+    <form action="{{ url_for('payment') }}" method="POST">
+        <input type="hidden" name="payment_method" value="UPI / QR Code Scan">
+        
+        <button type="submit" class="btn-confirm">
+            ✔ Confirm Payment & Get Ticket
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

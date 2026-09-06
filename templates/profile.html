@@ -3,49 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | Horizon Airlines</title>
+    <title>My Account | Horizon Airlines</title>
 
     <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gilroy', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffb36b 0%, #ff7b7b 45%, #74b9ff 100%);
+            color: white;
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 70px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        nav img {
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #a6d0e2;
+        }
+
+        /* PROFILE LAYOUT */
+        .profile-container {
+            width: 88%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* GLASS CARDS */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* USER SIDEBAR */
+        .user-sidebar {
+            text-align: center;
+            height: fit-content;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin: 0 auto 15px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .user-sidebar h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .user-sidebar p {
+            color: #f0f0f0;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .user-info-list {
+            text-align: left;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 18px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 12px;
+        }
+
+        .info-item label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #e0e0e0;
+        }
+
+        .info-item span {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .btn-logout {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: #ff4d4d;
+            border-color: #ff4d4d;
+        }
+
+        /* BOOKINGS CONTENT */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .booking-item {
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+
+        .booking-item:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        .route-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .booking-details-p {
+            font-size: 14px;
+            color: #f0f0f0;
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+
+        .highlight-tag {
+            color: #ffd166;
+            font-weight: 700;
+        }
+
+        .booking-badge {
+            background: rgba(40, 167, 69, 0.85);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-view {
+            padding: 12px 22px;
+            background: #ff8c38;
+            color: white;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn-view:hover {
+            background: #ff6f00;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 850px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+            .booking-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="login-container">
+    <!-- NAVBAR -->
+    <nav>
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo"></a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('flights') }}">Flights</a>
+            <a href="{{ url_for('booking') }}">Book Flight</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
 
-    <div class="login-card">
+    <!-- MAIN PROFILE SECTION -->
+    <div class="profile-container">
+        
+        <!-- SIDEBAR: USER INFO -->
+        <div class="glass-card user-sidebar">
+            <div class="avatar">👤</div>
+            
+            <h2>
+                {% if user %}
+                    {{ user.name if user.name else user.username if user.username else user['name'] if user['name'] is defined else 'Passenger' }}
+                {% else %}
+                    Passenger
+                {% endif %}
+            </h2>
+            <p>
+                {% if user %}
+                    {{ user.email if user.email else user['email'] if user['email'] is defined else 'User Account' }}
+                {% else %}
+                    User Account
+                {% endif %}
+            </p>
 
-        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
+            <div class="user-info-list">
+                <div class="info-item">
+                    <label>Account Status</label>
+                    <span>Active Passenger</span>
+                </div>
+                <div class="info-item">
+                    <label>Total Bookings</label>
+                    <span>{{ bookings|length if bookings else '0' }} Flight(s)</span>
+                </div>
+            </div>
 
-        <h1>My Profile</h1>
-
-        <p>Welcome to Horizon Airlines.</p>
-
-        <div class="input-box">
-            <input type="text" value="Name : Demo User" readonly>
+            <a href="{{ url_for('logout') }}" class="btn-logout">Logout Account</a>
         </div>
 
-        <div class="input-box">
-            <input type="email" value="Email : demo@gmail.com" readonly>
+        <!-- MAIN CONTENT: BOOKING HISTORY -->
+        <div class="glass-card">
+            <div class="section-title">
+                ✈️ Booking History & Tickets
+            </div>
+
+            {% if bookings %}
+                {% for b in bookings %}
+                <div class="booking-item">
+                    <div class="route-info">
+                        <span class="booking-badge">CONFIRMED</span>
+                        
+                        <h3>
+                            {{ b.source if b.source else b.flight_source if b.flight_source else b['source'] if b['source'] is defined else 'Origin' }} 
+                            ➔ 
+                            {{ b.destination if b.destination else b.flight_destination if b.flight_destination else b['destination'] if b['destination'] is defined else 'Destination' }}
+                        </h3>
+
+                        <p class="booking-details-p">
+                            <strong>Flight:</strong> {{ b.flight_name if b.flight_name else b.flight if b.flight else b['flight_name'] if b['flight_name'] is defined else 'Horizon Airlines' }} <br>
+                            <strong>Seats:</strong> <span class="highlight-tag">{{ b.seats if b.seats else b.seats_str if b.seats_str else b.seat_numbers if b.seat_numbers else b['seats'] if b['seats'] is defined else 'Assigned' }}</span> | 
+                            <strong>Total Amount Paid:</strong> <span class="highlight-tag">₹{{ b.total_amount if b.total_amount else b.amount if b.amount else b.price if b.price else b['total_amount'] if b['total_amount'] is defined else 'N/A' }}</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <a href="{{ url_for('receipt') }}" class="btn-view">View Ticket 🎫</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center; color: #e0e0e0; margin-top: 30px;">No flight bookings found yet.</p>
+            {% endif %}
+
         </div>
-
-        <div class="input-box">
-            <input type="text" value="Total Bookings : 0" readonly>
-        </div>
-
-        <a href="{{ url_for('booking') }}">
-            <button>Book Flight</button>
-        </a>
-
-        <br><br>
-
-        <a class="home-link" href="{{ url_for('home') }}">
-            ← Back to Home
-        </a>
 
     </div>
-
-</div>
 
 </body>
 </html>

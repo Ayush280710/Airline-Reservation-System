@@ -3,66 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Ticket | Horizon Airlines</title>
+    <title>Booking Receipt | Horizon Airlines</title>
 
     <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gilroy', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffb36b 0%, #ff7b7b 45%, #74b9ff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .receipt-card {
+            width: 100%;
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 40px 35px;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.8s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .receipt-header {
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .receipt-header img {
+            height: 48px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .status-badge {
+            background: rgba(40, 167, 69, 0.85);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .receipt-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .ticket-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.12);
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-group label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #f1f1f1;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .info-group span {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .price-summary {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 18px 20px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .price-summary span {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .price-summary h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 14px;
+            background: #ff8c38;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary:hover {
+            background: #ff6f00;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 14px;
+            border: 2px solid white;
+            color: white;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* Print Style */
+        @media print {
+            body {
+                background: white;
+            }
+            .receipt-card {
+                background: white;
+                color: black;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            .ticket-info, .price-summary {
+                background: #f8f9fa;
+                color: black;
+            }
+            .info-group span, .price-summary h2 {
+                color: black;
+            }
+            .actions {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="login-container">
-
-    <div class="login-card">
-
+<div class="receipt-card">
+    <div class="receipt-header">
         <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo">
-
-        <h1>Boarding Pass ✈</h1>
-
-        <p>Your flight has been booked successfully.</p>
-
-        <hr><br>
-
-        <div class="input-box">
-            <input type="text" value="Passenger : {{ booking.name }}" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="From : {{ booking.source }}" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="To : {{ booking.destination }}" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="Travel Date : {{ booking.date }}" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="Passengers : {{ booking.passengers }}" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="Flight : HA-204" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="Gate : B12" readonly>
-        </div>
-
-        <div class="input-box">
-            <input type="text" value="Seat : 14A" readonly>
-        </div>
-
         <br>
-
-        <a href="{{ url_for('home') }}">
-            <button>Return Home</button>
-        </a>
-
+        <span class="status-badge">✔ PAYMENT CONFIRMED</span>
+        <h1>E-Ticket & Receipt</h1>
     </div>
 
+    <div class="ticket-info">
+        <div class="info-group">
+            <label>Booking ID</label>
+            <span>#{{ booking['id'] if booking else 'HZ-89240' }}</span>
+        </div>
+        <div class="info-group">
+            <label>Payment Method</label>
+            <span>UPI / QR Scan</span>
+        </div>
+        <div class="info-group">
+            <label>Flight Name</label>
+            <span>{{ flight['name'] if flight else 'Horizon Sky-402' }}</span>
+        </div>
+        <div class="info-group">
+            <label>Route</label>
+            <span>{{ flight['source'] if flight else 'Delhi' }} ➔ {{ flight['destination'] if flight else 'Mumbai' }}</span>
+        </div>
+        <div class="info-group">
+            <label>Passengers</label>
+            <span>{{ booking['passengers_count'] if booking else '1' }} Adult(s)</span>
+        </div>
+        <div class="info-group">
+            <label>Seat Number(s)</label>
+            <span>{{ booking['seats'] if booking else '12A, 12B' }}</span>
+        </div>
+    </div>
+
+    <div class="price-summary">
+        <span>Total Amount Paid</span>
+        <h2>₹{{ booking['total_amount'] if booking else '4,500' }}</h2>
+    </div>
+
+    <div class="actions">
+        <button onclick="window.print()" class="btn-secondary">🖨️ Print Ticket</button>
+        <a href="{{ url_for('home') if 'home' in endpoints else '/' }}" class="btn-primary">Back to Home</a>
+    </div>
 </div>
 
 </body>

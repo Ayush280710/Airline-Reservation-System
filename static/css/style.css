@@ -755,3 +755,20 @@ body {
 #main {
     min-height: 100vh;
 }
+/* --- FIX FOR INFINITE SCROLL & EXTRA BOTTOM SPACE --- */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow-x: hidden !important;
+}
+
+#main {
+    height: auto !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+#footer, footer, #main > *:last-child {
+    margin-bottom: 0 !important;
+}
