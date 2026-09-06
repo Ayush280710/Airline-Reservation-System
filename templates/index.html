@@ -25,11 +25,11 @@
                 </div>
                 <div id="nav-part3">
     {% if session.get('user_id') or session.get('user_name') %}
-        <!-- Active Session Options -->
+        
         <a href="{{ url_for('profile') }}">Profile </a>
         <a href="{{ url_for('logout') }}">Logout</a>
     {% else %}
-        <!-- Default Options -->
+       
         <a href="{{ url_for('login') }}">Login</a>
         <a href="{{ url_for('register') }}">Register</a>
     {% endif %}

@@ -38,23 +38,20 @@ def get_current_user():
         "email": session.get("user_email", "passenger@example.com")
     }
 
-# ==========================================
-# ALL APP ROUTES
-# ==========================================
 
-# 1. HOME
+
 @app.route("/")
 def home():
     user = get_current_user()
     return render_template("index.html", user=user, current_user=user)
 
-# 2. FLIGHTS
+
 @app.route("/flights", methods=["GET", "POST"])
 def flights():
     user = get_current_user()
     return render_template("flights.html", user=user, current_user=user)
 
-# 3. BOOKING FORM & PROCESS
+
 @app.route("/booking", methods=["GET", "POST"])
 def booking():
     user = get_current_user()
@@ -69,12 +66,12 @@ def booking():
         return redirect(url_for("payment"))
     return render_template("booking.html", user=user, current_user=user)
 
-# 4. SEARCH REDIRECT
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     return redirect(url_for("flights"))
 
-# 5. DASHBOARD (DYNAMIC BOOKINGS & METRICS FIXED)
+
 @app.route("/dashboard")
 def dashboard():
     user = get_current_user()
@@ -99,7 +96,6 @@ def dashboard():
         total_spent=f"{total_spent:,.2f}"
     )
 
-# 6. USER PROFILE
 @app.route("/profile")
 def profile():
     user_data = get_current_user()
@@ -112,7 +108,6 @@ def profile():
         bookings=user_bookings
     )
 
-# 7. AUTHENTICATION (LOGIN & REGISTER)
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -127,7 +122,6 @@ def register():
         return redirect(url_for("login"))
     return render_template("register.html")
 
-# 8. PAYMENT & TICKET GENERATION
 @app.route("/payment", methods=["GET", "POST"])
 def payment():
     user = get_current_user()
@@ -173,7 +167,7 @@ def ticket():
     booking = session.get("last_booking", {})
     return render_template("ticket.html", booking=booking, user=user, current_user=user)
 
-# 9. ADMIN PANEL ROUTES
+
 @app.route("/admin_login", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
@@ -188,13 +182,13 @@ def admin_dashboard():
 def admin():
     return redirect(url_for("admin_login"))
 
-# 10. LOGOUT
+
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("home"))
 
-# CATCH-ALL FALLBACK ROUTE
+
 @app.route("/<path:invalid_route>")
 def fallback_route(invalid_route):
     return redirect(url_for("home"))

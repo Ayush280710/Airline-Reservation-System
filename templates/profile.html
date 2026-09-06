@@ -24,7 +24,7 @@
             padding-bottom: 50px;
         }
 
-        /* NAVBAR */
+        
         nav {
             height: 70px;
             width: 100%;
@@ -64,7 +64,7 @@
             color: #a6d0e2;
         }
 
-        /* PROFILE LAYOUT */
+        
         .profile-container {
             width: 88%;
             max-width: 1100px;
@@ -80,7 +80,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* GLASS CARDS */
+        
         .glass-card {
             background: rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(20px);
@@ -91,7 +91,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
-        /* USER SIDEBAR */
+        
         .user-sidebar {
             text-align: center;
             height: fit-content;
@@ -164,7 +164,7 @@
             border-color: #ff4d4d;
         }
 
-        /* BOOKINGS CONTENT */
+        
         .section-title {
             font-size: 22px;
             font-weight: 700;
@@ -253,7 +253,7 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    
     <nav>
         <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo"></a>
         <div class="nav-links">
@@ -265,10 +265,10 @@
         </div>
     </nav>
 
-    <!-- MAIN PROFILE SECTION -->
+    
     <div class="profile-container">
         
-        <!-- SIDEBAR: USER INFO -->
+        
         <div class="glass-card user-sidebar">
             <div class="avatar">👤</div>
             
@@ -301,7 +301,7 @@
             <a href="{{ url_for('logout') }}" class="btn-logout">Logout Account</a>
         </div>
 
-        <!-- MAIN CONTENT: BOOKING HISTORY -->
+        
         <div class="glass-card">
             <div class="section-title">
                 ✈️ Booking History & Tickets

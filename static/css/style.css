@@ -755,7 +755,6 @@ body {
 #main {
     min-height: 100vh;
 }
-/* --- FIX FOR INFINITE SCROLL & EXTRA BOTTOM SPACE --- */
 html, body {
     margin: 0 !important;
     padding: 0 !important;
