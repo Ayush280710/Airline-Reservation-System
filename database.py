@@ -72,7 +72,7 @@ def init_db():
     );
     ''')
 
-flights = [
+    flights = [
     # ───────────── DOMESTIC ─────────────
 
     ('HA101', 'Delhi', 'Mumbai', '09:00 AM', '11:15 AM', 8499, '2h 15m'),
