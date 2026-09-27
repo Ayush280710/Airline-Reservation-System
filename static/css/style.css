@@ -46,10 +46,10 @@ nav{
 }
 
 nav img{
-    height:45px;
-    width:125px;
+    height:auto;
+    width:170px;
     max-width:100%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
     border-radius:18px;
 }
