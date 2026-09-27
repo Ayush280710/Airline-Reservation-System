@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 </head><body>
 <div class="page-wrap"><div class="form-card">
-<img class="form-logo" src="{{ url_for('static', filename='images/logo3.png') }}" alt="Horizon Airlines">
+<img class="form-logo" src="{{ url_for('static', filename='images/logo4.png') }}" alt="Horizon Airlines">
 <h1>Book Your Flight</h1><p>Select a real available route, travel class and passengers.</p>
 {% with messages=get_flashed_messages(with_categories=true) %}{% for category,msg in messages %}<div class="flash {{ category }}">{{ msg }}</div>{% endfor %}{% endwith %}
 <form method="POST" id="bookingForm">

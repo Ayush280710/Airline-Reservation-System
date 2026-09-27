@@ -1,1 +1,36 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}"><title>Login | Horizon Airlines</title><link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"></head><body><div class="login-container"><div class="login-card"><img src="{{ url_for('static', filename='images/logo3.png') }}"><h1>Welcome Back</h1><p>Login to continue your journey.</p>{% with messages=get_flashed_messages(with_categories=true) %}{% for category,msg in messages %}<div class="flash {{ category }}">{{ msg }}</div>{% endfor %}{% endwith %}<form method="POST"><div class="input-box"><input type="email" name="email" placeholder="Email Address" required></div><div class="input-box"><input type="password" name="password" placeholder="Password" required></div><button>Login</button></form><a class="register-link" href="{{ url_for('register') }}">Don't have an account? Register</a><a class="home-link" href="{{ url_for('home') }}">Back to Home</a><a class="home-link" href="{{ url_for('admin_login') }}">Admin Login</a></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+        <title>Login | Horizon Airlines</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="login-card">
+                <img src="{{ url_for('static', filename='images/logo4.png') }}">
+                <h1>Welcome Back</h1>
+                <p>Login to continue your journey.</p>
+                {% with messages=get_flashed_messages(with_categories=true) %}
+                    {% for category,msg in messages %}
+                        <div class="flash {{ category }}">{{ msg }}</div>
+                    {% endfor %}
+                {% endwith %}
+                <form method="POST">
+                    <div class="input-box">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button>Login</button>
+                </form>
+                <a class="register-link" href="{{ url_for('register') }}">Don't have an account? Register</a>
+                <a class="home-link" href="{{ url_for('home') }}">Back to Home</a>
+                <a class="home-link" href="{{ url_for('admin_login') }}">Admin Login</a>
+            </div>
+        </div>
+    </body>
+</html>

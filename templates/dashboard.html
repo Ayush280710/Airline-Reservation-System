@@ -1,1 +1,61 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard | Horizon Airlines</title><link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}"><link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"><link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"></head><body><main class="dashboard-page"><div class="dashboard-card"><div class="dashboard-top"><a href="{{ url_for('home') }}"><i class="ri-arrow-left-line"></i> Home</a><a href="{{ url_for('logout') }}">Logout</a></div><div class="dashboard-header"><img src="{{ url_for('static', filename='images/logo3.png') }}"><p class="eyebrow">PERSONAL DASHBOARD</p><h1>Welcome, {{ user.name.split()[0] }}</h1><p>Everything about your Horizon journeys, in one place.</p></div><div class="stats"><div class="stat-box"><i class="ri-ticket-2-line"></i><h2>{{ total_bookings }}</h2><p>Total Bookings</p></div><div class="stat-box"><i class="ri-user-3-line"></i><h2>1</h2><p>Active Profile</p></div></div><div class="button-grid"><a class="dashboard-btn" href="{{ url_for('booking') }}"><i class="ri-flight-takeoff-line"></i><span>Book a Flight</span><small>Plan your next journey</small></a><a class="dashboard-btn" href="{{ url_for('profile') }}"><i class="ri-user-settings-line"></i><span>My Profile</span><small>Account & bookings</small></a><a class="dashboard-btn" href="{{ url_for('flights') }}"><i class="ri-search-line"></i><span>Browse Flights</span><small>Explore available routes</small></a><a class="dashboard-btn" href="{{ url_for('support') }}"><i class="ri-customer-service-2-line"></i><span>Support Center</span><small>Get travel help</small></a></div></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Horizon Airlines</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <main class="dashboard-page">
+        <div class="dashboard-card">
+            <div class="dashboard-top">
+                <a href="{{ url_for('home') }}"><i class="ri-arrow-left-line"></i> Home</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+            <div class="dashboard-header">
+                <img src="{{ url_for('static', filename='images/logo4.png') }}">
+                <p class="eyebrow">PERSONAL DASHBOARD</p>
+                <h1>Welcome, {{ user.name.split()[0] }}</h1>
+                <p>Everything about your Horizon journeys, in one place.</p>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <i class="ri-ticket-2-line"></i>
+                    <h2>{{ total_bookings }}</h2>
+                    <p>Total Bookings</p>
+                </div>
+                <div class="stat-box">
+                    <i class="ri-user-3-line"></i>
+                    <h2>1</h2>
+                    <p>Active Profile</p>
+                </div>
+            </div>
+            <div class="button-grid">
+                <a class="dashboard-btn" href="{{ url_for('booking') }}">
+                    <i class="ri-flight-takeoff-line"></i>
+                    <span>Book a Flight</span>
+                    <small>Plan your next journey</small>
+                </a>
+                <a class="dashboard-btn" href="{{ url_for('profile') }}">
+                    <i class="ri-user-settings-line"></i>
+                    <span>My Profile</span>
+                    <small>Account & bookings</small>
+                </a>
+                <a class="dashboard-btn" href="{{ url_for('flights') }}">
+                    <i class="ri-search-line"></i>
+                    <span>Browse Flights</span>
+                    <small>Explore available routes</small>
+                </a>
+                <a class="dashboard-btn" href="{{ url_for('support') }}">
+                    <i class="ri-customer-service-2-line"></i>
+                    <span>Support Center</span>
+                    <small>Get travel help</small>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
