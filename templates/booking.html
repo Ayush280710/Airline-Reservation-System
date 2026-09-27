@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Flight | Horizon Airlines</title>
+<link rel="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/booking.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head><body>
+<div class="page-wrap"><div class="form-card">
+<img class="form-logo" src="{{ url_for('static', filename='images/logo3.png') }}" alt="Horizon Airlines">
+<h1>Book Your Flight</h1><p>Select a real available route, travel class and passengers.</p>
+{% with messages=get_flashed_messages(with_categories=true) %}{% for category,msg in messages %}<div class="flash {{ category }}">{{ msg }}</div>{% endfor %}{% endwith %}
+<form method="POST" id="bookingForm">
+<label>Flight</label><select name="flight_id" id="flight" required>
+<option value="">Select an available flight</option>
+{% for f in flights %}<option value="{{ f.id }}" data-price="{{ f.base_price }}" {% if selected_flight and selected_flight.id==f.id %}selected{% endif %}>{{ f.flight_no }} — {{ f.source }} to {{ f.destination }} — ₹{{ '{:,}'.format(f.base_price) }}</option>{% endfor %}
+</select>
+<div class="two"><div><label>Travel date</label><input type="date" name="date" min="{{ today }}" required></div><div><label>Travel class</label><select name="travel_class" id="travelClass"><option>Economy</option><option>Business</option><option>First Class</option></select></div></div>
+<label>Number of passengers</label><input type="number" id="passengerCount" name="passengers" min="1" max="9" value="1" required>
+<div id="passengerFields" class="passengers"></div>
+<div class="price-box">Estimated total: <strong id="totalPrice">₹0</strong></div>
+<button type="submit">Continue to Payment</button>
+</form>
+<a class="home-link" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</div></div>
+<script>
+const count=document.getElementById('passengerCount'), fields=document.getElementById('passengerFields'), flight=document.getElementById('flight'), cls=document.getElementById('travelClass'), total=document.getElementById('totalPrice');
+function renderPassengers(){fields.innerHTML=''; for(let i=1;i<=Number(count.value||1);i++){const d=document.createElement('div');d.className='passenger-row';d.innerHTML=`<label>Passenger ${i} name</label><input name="passenger_name" type="text" placeholder="Full name" required>`;fields.appendChild(d)} updatePrice();}
+function updatePrice(){const o=flight.options[flight.selectedIndex], base=Number(o?.dataset.price||0), mult={Economy:1,Business:1.75,'First Class':2.5}[cls.value]||1; total.textContent='₹'+Math.round(base*mult*Number(count.value||1)).toLocaleString('en-IN');}
+count.addEventListener('input',renderPassengers); flight.addEventListener('change',updatePrice); cls.addEventListener('change',updatePrice); renderPassengers();
+</script></body></html>
